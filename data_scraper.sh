@@ -44,11 +44,6 @@ if [ "$SHOULD_EXIT" = true ]; then
     exit 1
 fi
 
-
-
-echo "Price current: $price"
-echo "Price 24h low: $pricelow"
-echo "Price 24h high: $pricehigh"
-
 $MYSQL $DB -e "INSERT INTO prices (timestamp, current, high, low) VALUES (NOW(), $price, $pricehigh, $pricelow);" >> "$LOGFILE" 2>&1
 $MYSQL $DB -e "SELECT * FROM prices ORDER BY timestamp DESC LIMIT 5;"
+echo "====================================================================================="
