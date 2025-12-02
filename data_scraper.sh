@@ -46,7 +46,7 @@ for coin in "${COINS[@]}"; do
         else
             # Retry the curl if we fail to get it, in case internet out or server down, just to be more robust
             echo "$(date): Failed (attempt $attempt). Missing data. Retrying in ${SLEEP}s..." | tee -a "$LOGFILE"
-            [ $attempt -lt $MAX_RETRIES ] && sleep $SLEEP
+            [ $attempt -lt $MAX_RETRIES ] && sleep $COOLDOWN
         fi
         
         # Final failure after all retries
